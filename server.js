@@ -1,7 +1,7 @@
 'use strict';
 var AV = require('leanengine');
 var axios = require('axios');
-var express = require('express');
+// var express = require('express');
 
 var axs = axios.create({
   // baseURL: 'http://localhost:8080',
@@ -19,8 +19,13 @@ AV.init({
 // 如果不希望使用 masterKey 权限，可以将下面一行删除
 AV.Cloud.useMasterKey();
 
-var app = express();
+// var app = express();
 
+var app = require('./app');
+
+AV.Cloud.define('hello', function(request, response) {
+  response.success('Hello world!');
+});
 
 AV.Cloud.afterSave('_User', function(request) {
 
@@ -38,7 +43,6 @@ AV.Cloud.afterSave('_User', function(request) {
 console.log('app started')
 
 
-// var app = require('./app');
 
 // // 端口一定要从环境变量 `LEANCLOUD_APP_PORT` 中获取。
 // // LeanEngine 运行时会分配端口并赋值到该变量。
