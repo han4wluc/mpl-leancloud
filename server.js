@@ -29,7 +29,7 @@ AV.Cloud.define('hello', function(request, response) {
 
 AV.Cloud.afterSave('_User', function(request) {
 
-  axios.post('/user', {
+  axs.post('/user', {
     _id: request.object.id,
     email: request.object.get('email'),
     username: request.object.get('username'),
