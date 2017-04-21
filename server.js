@@ -44,6 +44,10 @@ console.log('app started')
 // // LeanEngine 运行时会分配端口并赋值到该变量。
 var PORT = parseInt(process.env.LEANCLOUD_APP_PORT || process.env.PORT || 3000);
 
+app.get('/', function(req, res){
+  res.status(200).send('hello')
+})
+
 app.listen(PORT, function (err) {
   console.log('Node app is running on port:', PORT);
 
